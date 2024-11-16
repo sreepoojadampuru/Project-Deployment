@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Dot Brain</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+
+        /* Help Section */
+        .help-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #1f1f2e;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #cfcfea;
+        }
+
+        input, textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        input[type="submit"] {
+            background-color: #FFD700;
+            color: #1f1f2e;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffad33;
+        }
+
+        footer {
+            background-color: #1f1f2e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #cfcfea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="https://www.vecteezy.com/vector-art/13906231-creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            </a>
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'base' %}">Home</a></li>
+            <li><a href="editor.html">Terminal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Help Section -->
+    <div class="help-section">
+        <h1>Help Center</h1>
+        <h2>Frequently Asked Questions</h2>
+        <ul>
+            <li><strong>How do I reset my password?</strong> You can reset your password by clicking on the 'Forgot Password?' link on the login page.</li>
+            <li><strong>How do I change my email address?</strong> Go to your profile settings and update your email in the account settings.</li>
+            <li><strong>What programming languages are supported?</strong> We support languages like Java, Python, JavaScript, C++, and more.</li>
+            <li><strong>How can I report a bug?</strong> You can report a bug through the contact form below.</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <form class="contact-form" action="pro.html" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dot Brain. All rights reserved.</p>
+    </footer>
+</body>
+</html>

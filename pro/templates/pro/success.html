@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .success-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .success-box {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .success-icon {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #28a745;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-box">
+            <img src="https://img.icons8.com/fluency/48/000000/checked.png" alt="Success Icon" class="success-icon">
+            <h1>Login Successful</h1>
+            <p>Welcome back! You have successfully logged in.</p>
+            <button onclick="redirectToHome()">Go to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = "/dashboard"; // Update with your dashboard URL
+        }
+    </script>
+</body>
+</html>

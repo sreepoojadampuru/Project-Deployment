@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Real-time Code Editor</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center; /* Center the navigation links */
+            flex: 1; /* Take the available space */
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #1f1f2e;
+        }
+
+        p, ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1f2e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #cfcfea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="https://www.vecteezy.com/vector-art/13906231-creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            </a>
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+             <li><a href="{% url 'base' %}">Home</a></li>
+             <li><a href="editor.html">Terminal</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a href="notes.html">Notes</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h1>About </h1>
+        <p>Welcome to the Real-time Code Editor platform! This application allows developers to collaborate in real-time, writing code in multiple languages with full syntax highlighting and live updates.</p>
+
+        <p>Features of our platform include:</p>
+        <ul>
+            <li>Collaborative coding with real-time updates</li>
+            <li>Support for multiple programming languages</li>
+            <li>User presence indicators</li>
+            <li>Integrated version control using Git</li>
+            <li>An AI-powered chatbot to assist with coding queries</li>
+        </ul>
+
+        <p>Our mission is to create a seamless coding environment that enables teams and individuals to collaborate, learn, and build amazing projects together.</p>
+
+        <p>Whether you're working on a small project or collaborating with a large team, our platform makes it easy to write, review, and run code in a shared workspace.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dot Brain. All rights reserved.</p>
+    </footer>
+</body>
+</html>

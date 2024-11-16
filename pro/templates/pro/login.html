@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dot Brain</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+
+        /* Profile dropdown */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-icon {
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-icon img {
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #1f1f2e;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #62D0FF;
+        }
+
+        /* Show the dropdown menu on hover */
+        .profile-container:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: calc(100vh - 70px); /* Adjust height for nav */
+            background: linear-gradient(135deg, #8f00ff, #00b0ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #1f1f2e;
+            padding: 30px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: #cfcfea;
+        }
+
+        h2 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #cfcfea;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        input[type="submit"] {
+            background-color: #FFD700;
+            color: #1f1f2e;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffad33;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup-link a {
+            text-decoration: none;
+            color: #62D0FF;
+        }
+
+        .signup-link a:hover {
+            color: #1e90ff;
+        }
+
+        /* Password Strength Indicator Styles */
+        .indicator {
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .weak {
+            background-color: red;
+            width: 33%;
+        }
+
+        .medium {
+            background-color: orange;
+            width: 66%;
+        }
+
+        .strong {
+            background-color: green;
+            width: 100%;
+        }
+
+        #strength-text {
+            margin-top: 5px;
+            font-weight: bold;
+            color: #cfcfea;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+
+            input {
+                font-size: 0.9em;
+            }
+
+            input[type="submit"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="https://www.vecteezy.com/vector-art/13906231-creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            </a>
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'base' %}">Home</a></li>
+            <li><a href="editor.html">Terminal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+
+        <!-- Profile with Dropdown -->
+        <div class="profile-container">
+            <div class="profile-icon">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSw6NrD2ZmFaFxgVVloTe6XLOU4xSVcM_rJw&s" alt="">
+                <span>Profile</span>
+            </div>
+            <div class="dropdown-content">
+                <a href="profile.html" class="active">Dashboard</a>
+                <a href="login.html">Login</a>
+                <a href="reg.html">Sign Up</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h2>Login to Dot Brain</h2>
+            <form action="dashboard.html" method="post">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <div class="indicator" id="strength-indicator"></div>
+                <div id="strength-text">Strength: </div>
+                <input type="submit" value="Login"><a href="profile.html">profile</a>
+            </form>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="reg.html">Sign Up</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dot Brain. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthIndicator = document.getElementById('strength-indicator');
+        const strengthText = document.getElementById('strength-text');
+
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            let strength = 0;
+
+            if (password.length >= 8) strength++; // Minimum length
+            if (/[A-Z]/.test(password)) strength++; // Uppercase letters
+            if (/[a-z]/.test(password)) strength++; // Lowercase letters
+            if (/[0-9]/.test(password)) strength++; // Numbers
+            if (/[\W_]/.test(password)) strength++; // Special characters
+
+            // Update the indicator and strength text
+            if (strength === 0) {
+                strengthIndicator.className = 'indicator';
+                strengthText.innerText = 'Strength: Very Weak';
+            } else if (strength === 1) {
+                strengthIndicator.className = 'indicator weak';
+                strengthText.innerText = 'Strength: Weak';
+            } else if (strength === 2) {
+                strengthIndicator.className = 'indicator medium';
+                strengthText.innerText = 'Strength: Medium';
+            } else {
+                strengthIndicator.className = 'indicator strong';
+                strengthText.innerText = 'Strength: Strong';
+            }
+        });
+    </script>
+
+</body>
+</html>

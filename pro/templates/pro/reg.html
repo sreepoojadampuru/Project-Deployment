@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Dot Brain</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: calc(100vh - 70px); /* Adjust height for nav */
+            background: linear-gradient(135deg, #8f00ff, #00b0ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #1f1f2e;
+            padding: 30px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: #cfcfea;
+        }
+
+        h2 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #cfcfea;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        input[type="submit"] {
+            background-color: #FFD700;
+            color: #1f1f2e;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffad33;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #62D0FF;
+        }
+
+        .login-link a:hover {
+            color: #1e90ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+
+            input {
+                font-size: 0.9em;
+            }
+
+            input[type="submit"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="https://www.vecteezy.com/vector-art/13906231-creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            </a>
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'base' %}">Home</a></li>
+            <li><a href="editor.html">Terminal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="notes.html">Notes</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h2>Sign Up for Dot Brain</h2>
+            <form action="dashboard.html" method="post">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+                <input type="submit" value="Sign Up">
+            </form>
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dot Brain. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Dot Brain</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+        /* Profile dropdown */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-icon {
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-icon img {
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #1f1f2e;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+        }
+        .dropdown-content a:hover {
+            background-color: #62D0FF;
+        }
+
+        /* Show the dropdown menu on hover */
+        .profile-container:hover .dropdown-content {
+            display: block;
+        }
+         /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, #8f00ff, #00b0ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            color: #ffffff;
+        }
+
+        .hero-content h1 span {
+            color: #FFD700;
+        }
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #e5e5e5;
+        }
+         .cta {
+            padding: 10px 25px;
+            background-color: #FFD700;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #ffad33;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1f2e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            color: #cfcfea;
+        }
+
+
+
+        /* Settings Page */
+        .settings-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #1f1f2e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            color: #cfcfea;
+        }
+
+        h2 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .settings-section {
+            margin-bottom: 30px;
+        }
+
+        .settings-section h3 {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #cfcfea;
+        }
+
+        select, input[type="checkbox"], input[type="range"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f4f4f4;
+            color: #1f1f2e;
+        }
+
+        .range-output {
+            font-size: 1.2em;
+            color: #FFD700;
+        }
+
+        input[type="submit"] {
+            background-color: #FFD700;
+            color: #1f1f2e;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffad33;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .settings-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="https://www.vecteezy.com/vector-art/13906231-creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            </a>
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'base' %}">Home</a></li>
+            <li><a href="editor.html">Terminal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+
+        <!-- Profile with Dropdown -->
+        <div class="profile-container">
+            <div class="profile-icon">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSw6NrD2ZmFaFxgVVloTe6XLOU4xSVcM_rJw&s" alt="">
+                <span>Profile</span>
+            </div>
+            <div class="dropdown-content">
+                <a href="login.html">Login</a>
+                <a href="reg.html">Sign Up</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Page -->
+    <section class="settings-section">
+        <div class="settings-container">
+            <h2>Settings</h2>
+
+            <!-- Theme Section -->
+            <div class="settings-section">
+                <h3>Theme</h3>
+                <label for="theme">Select Theme:</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="solarized">Solarized</option>
+                    <option value="monokai">Monokai</option>
+                </select>
+            </div>
+
+            <!-- Font Size Section -->
+            <div class="settings-section">
+                <h3>Font Size</h3>
+                <label for="font-size">Adjust Font Size:</label>
+                <input type="range" id="font-size" name="font-size" min="10" max="24" value="14" oninput="document.getElementById('font-size-value').innerText = this.value + 'px'">
+                <div class="range-output">Font Size: <span id="font-size-value">14px</span></div>
+            </div>
+
+            <!-- Editor Features -->
+            <div class="settings-section">
+                <h3>Editor Features</h3>
+                <label><input type="checkbox" name="line-numbers" checked> Show Line Numbers</label>
+                <label><input type="checkbox" name="word-wrap"> Enable Word Wrap</label>
+                <label><input type="checkbox" name="auto-complete"> Enable Auto-Complete</label>
+            </div>
+
+            <!-- Settings Form -->
+<form action="pro.html" method="get">
+    <!-- Other form elements -->
+
+    <!-- Submit Button and Profile Link -->
+    <div class="submit-container" style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Submit Button -->
+        <input type="submit" value="Save Settings" style="flex-grow: 1; margin-right: 10px;">
+    </div>
+</form>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dot Brain. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - Dot Brain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f2e;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        .logo {
+            margin-left: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #cfcfea;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links li a:hover {
+            color: #62D0FF;
+        }
+
+        /* Editor Styles */
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 70px);
+            padding: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .run-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
+        }
+
+        .language-select-container {
+            margin-right: 10px;
+        }
+
+        .language-select-container select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .output-container h2 {
+            font-size: 20px;
+        }
+
+        #output {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1f1f2e;
+            color: #cfcfea;
+        }
+
+        /* Update this part in your CSS */
+        .CodeMirror {
+            height: 400px;
+            border-radius: 5px;
+            background-color: #ffffff; /* Set background to white */
+            color: #000000; /* Set text color to black for readability */
+        }
+
+        .line-numbers {
+            color: #888;
+        }
+    </style>
+
+    <!-- CodeMirror Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <img src="https://static.vecteezy.com/system/resources/previews/013/906/231/original/creative-brain-logo-design-brainstorm-power-thinking-brain-logotype-icon-vector.jpg" alt="Creative Brain Logo">
+            <div class="logo">Dot Brain</div>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{% url 'base' %}">Home</a></li>
+            <li><a href="editor.html">Terminal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Editor Section -->
+    <div class="editor-container">
+        <div class="buttons">
+            <div class="language-select-container">
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="text/x-java">Java</option>
+                    <option value="text/x-csrc">C</option>
+                    <option value="text/x-c++src">C++</option>
+                </select>
+            </div>
+
+            <button class="run-btn" onclick="runCode()">Run Code</button>
+            <button class="clear-btn" onclick="clearEditor()">Clear</button>
+        </div>
+
+        <!-- CodeMirror Editor -->
+        <textarea id="codeEditor" placeholder="Write your code here..."></textarea>
+
+        <!-- Output Section -->
+        <div class="output-container">
+            <h2>Output:</h2>
+            <div id="output">Your output will appear here...</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dot Brain. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let editor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+            lineNumbers: true,
+            mode: "javascript",
+            theme: "default"
+        });
+
+        const outputElement = document.getElementById('output');
+
+        async function runCode() {
+            const code = editor.getValue();
+            const language = document.getElementById('languageSelect').value;
+            outputElement.innerText = 'Executing...';
+
+            try {
+                const response = await fetch("{% url 'execute_code' %}", {  // Use Django's URL tag for proper linking
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ language, code })
+                });
+
+                const result = await response.json();
+                outputElement.innerText = result.output;
+            } catch (error) {
+                outputElement.innerText = 'Error: ' + error.message;
+            }
+        }
+
+        function clearEditor() {
+            editor.setValue('');
+            outputElement.innerText = 'Your output will appear here...';
+        }
+    </script>
+
+</body>
+</html>
